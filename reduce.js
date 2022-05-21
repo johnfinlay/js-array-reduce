@@ -15,7 +15,10 @@ function extractValue(arr, key) {
 }
 
 /*
-Write a function called vowelCount which accepts a string and returns an object with the keys as the vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a lowercase letter and uppercase letter should count
+Write a function called vowelCount which accepts a string and returns 
+an object with the keys as the vowel and the values as the number of 
+times the vowel appears in the string. This function should be case 
+insensitive so a lowercase letter and uppercase letter should count
 
 Examples:
     vowelCount('Elie') // {e:2,i:1};
@@ -25,7 +28,18 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 
-function vowelCount(str) {}
+function vowelCount(str) {
+    return str.split('').reduce(function(vowels, letter) {
+        if (['a','e','i','o','u'].includes(letter.toLowerCase())) {
+            if (vowels[letter.toLowerCase()]) {
+                vowels[letter.toLowerCase()]++;
+            } else {
+                vowels[letter.toLowerCase()] = 1;
+            }
+        }
+        return vowels;
+    },{});
+}
 
 /*
 Write a function called addKeyAndValue which accepts an array of objects and returns the array of objects passed to it with each object now including the key and value passed to the function.
